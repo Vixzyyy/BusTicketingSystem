@@ -1,0 +1,43 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<OutputType>WinExe</OutputType>
+		<TargetFramework>net9.0-windows</TargetFramework>
+		<UseWindowsForms>true</UseWindowsForms>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Nullable>enable</Nullable>
+		<GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+		<NoWarn>CA1416</NoWarn>
+		<StartupObject>UserInterfaceLayer.Program</StartupObject>
+	</PropertyGroup>
+
+	<ItemGroup>
+	  <Compile Remove="Properties\**" />
+	  <EmbeddedResource Remove="Properties\**" />
+	  <None Remove="Properties\**" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <None Remove="StaffApplication\AdminForms\DashboardForm.resx~RF523db6.TMP" />
+	  <None Remove="StaffApplication\AdminForms\SplashScreen.resx~RFa80b534.TMP" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\Application\Application.csproj" />
+		<ProjectReference Include="..\Domain\Domain.csproj" />
+	</ItemGroup>
+
+
+	<ItemGroup>
+		<PackageReference Include="Guna.UI2.WinForms" Version="2.0.4.7" />
+		<PackageReference Include="HtmlRenderer.NetCore" Version="1.0.0-preview-9" />
+	</ItemGroup>
+
+
+	<ItemGroup>
+	  <Folder Include="StaffApplication\CashierForms\" />
+	  <Folder Include="StaffApplication\ConductorForms\" />
+	  <Folder Include="StaffApplication\LoginForms\" />
+	</ItemGroup>
+
+</Project>

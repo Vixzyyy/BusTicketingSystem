@@ -1,0 +1,22 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>net9.0-windows</TargetFramework>
+		<UseWindowsForms>true</UseWindowsForms>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Nullable>enable</Nullable>
+		<GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+		<NoWarn>CA1416</NoWarn>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\Domain\Domain.csproj" />
+		<ProjectReference Include="..\DatabaseRelated\DatabaseRelated.csproj" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Guna.UI2.WinForms" Version="2.0.4.7" />
+		<PackageReference Include="MySql.Data" Version="9.4.0" />
+	</ItemGroup>
+
+</Project>
