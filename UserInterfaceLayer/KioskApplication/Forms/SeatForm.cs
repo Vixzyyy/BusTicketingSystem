@@ -47,19 +47,6 @@ namespace UserInterfaceLayer.KioskApplication.Forms
         {
             UserControl? seatLayout = null;
 
-            if (busType == "Regular Mini Bus")
-                seatLayout = new RegularMiniBus();
-            else if (busType == "Regular Coach")
-                seatLayout = new RegularCoachBus();
-            else if (busType == "Deluxe Coach")
-                seatLayout = new DeluxeCoachBus();
-            else if (busType == "Regular Tour Bus")
-                seatLayout = new RegularTourBus();
-            else if (busType == "Deluxe Tour Bus")
-                seatLayout = new DeluxeTourBus();
-
-            if (seatLayout != null)
-            {
                 seatLayout.Dock = DockStyle.Fill;
                 pnlSeatLayout.Controls.Clear();
                 pnlSeatLayout.Controls.Add(seatLayout);
@@ -90,17 +77,7 @@ namespace UserInterfaceLayer.KioskApplication.Forms
                 return;
             }
 
-            string busType = lblBusType.Text;
-            string busClass = lblBusClass.Text;
-            string origin = lblOrigin.Text;
-            string destination = lblDestination.Text;
-            string tripDateTime = $"{lblDeparture.Text} - {lblArrival.Text}";
 
-            decimal farePerSeat = 0;
-            decimal.TryParse(lblFareSeat.Text.Replace("₱", "").Trim(), NumberStyles.Any, CultureInfo.InvariantCulture, out farePerSeat);
-
-            decimal totalAmount = 0;
-            decimal.TryParse(lblTotalAmount.Text.Replace("₱", "").Trim(), NumberStyles.Any, CultureInfo.InvariantCulture, out totalAmount);
 
             PassengerDetailsForm passengerForm = new PassengerDetailsForm(
                 seats, busType, busClass,
@@ -109,7 +86,6 @@ namespace UserInterfaceLayer.KioskApplication.Forms
                 parentTripForm,
                 this
             );
-
             parentTripForm.LoadFormInMainPanel(passengerForm);
         }
 

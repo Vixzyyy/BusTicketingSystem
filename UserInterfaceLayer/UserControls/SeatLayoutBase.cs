@@ -1,4 +1,3 @@
-﻿using Guna.UI2.WinForms;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -50,7 +49,6 @@ namespace UserInterfaceLayer.KioskApplication.Forms
             var btn = sender as Guna2Button;
             if (btn == null) return;
 
-            // Taken seat → ignore
             if (btn.FillColor == Color.Red) return;
 
             // Toggle selection
@@ -59,14 +57,12 @@ namespace UserInterfaceLayer.KioskApplication.Forms
                 // Deselected → white bg, orange font
                 btn.FillColor = Color.White;
                 btn.ForeColor = Color.FromArgb(237, 164, 80);
-                selectedSeats.Remove(btn);
             }
             else
             {
                 // Selected → orange bg, white font
                 btn.FillColor = Color.FromArgb(237, 164, 80);
                 btn.ForeColor = Color.White;
-                selectedSeats.Add(btn);
             }
 
             UpdateSummary();

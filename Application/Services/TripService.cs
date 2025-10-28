@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using DatabaseRelated.Connection;
 using DatabaseRelated.Repositories;
 using Application.DTOs;
+using Domain.Interfaces;
 
 
 namespace Application.Services
@@ -42,22 +43,6 @@ namespace Application.Services
                 dtoList.Add(dto);
             }
             return dtoList;
-        }
-
-        public bool SqlTestConnection()
-        {
-            using (var conn = DatabaseConnection.Instance.GetConnection())
-            {
-                try
-                {
-                    conn.Open();
-                    return true;
-                }
-                catch
-                {
-                    return false;
-                }
-            }
         }
     }
 }

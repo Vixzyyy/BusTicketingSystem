@@ -296,13 +296,6 @@ namespace UserInterfaceLayer.KioskApplication.Forms
                         }
 
                         SeatForm seatForm = new SeatForm(
-                                //    t.origin, t.destination, t.type, t.cls,
-                                //    t.dep.ToString("yyyy-MM-dd HH:mm"),
-                                //    t.arr.ToString("yyyy-MM-dd HH:mm"),
-                                //    t.fare, this, trips);
-
-                                //seatForm.LoadSeatLayout(t.type, t.cls, t.fare);
-                                //LoadFormInMainPanel(seatForm);
                                 trip.Origin,
                                 trip.Destination,
                                 trip.BusType,
@@ -350,40 +343,17 @@ namespace UserInterfaceLayer.KioskApplication.Forms
 
             if (string.IsNullOrEmpty(origin) || string.IsNullOrEmpty(destination))
             {
-                MessageBox.Show("Please select both origin and destination.",
                     "Missing Info", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
-            if (origin == destination)
-            {
-                MessageBox.Show("Origin and destination cannot be the same.",
-                    "Invalid Selection", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
             }
-
-            List<TripDetailsDTO> trips = service.GetTrips(date, origin, destination);
-            currentTrips = trips;
-            MessageBox.Show($"Searching: {origin} → {destination} on {date}");
 
             if (trips == null || trips.Count == 0)
             {
                 MessageBox.Show("No trips found for this route and date.");
                 return;
             }
-
-            string result = "";
-            foreach (var trip in trips)
-            {
-                result += $"Trip ID: {trip.TripId}\n" +
-                          $"Origin: {trip.Origin}\n" +
-                          $"Destination: {trip.Destination}\n" +
-                          $"Departure: {trip.DepartureTime}\n" +
-                          $"Arrival: {trip.ArrivalTime}\n" +
-                          $"Price: {trip.FareAmount}\n\n";
-            }
-
-            MessageBox.Show(result);
             LoadTripCards(trips);
             ApplyFilters();
         }

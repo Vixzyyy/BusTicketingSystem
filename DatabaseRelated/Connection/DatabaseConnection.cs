@@ -14,7 +14,6 @@ namespace DatabaseRelated.Connection
 
         private const string ConnectionString = "server=localhost;user=root;password=root;database=busdb";
 
-        private DatabaseConnection() { }
 
         public static DatabaseConnection Instance
         {
